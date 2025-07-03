@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Search, Filter, Grid3X3, List, Bookmark, Star } from "lucide-react";
@@ -202,7 +203,7 @@ export default function CoursesPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="relative w-full h-[400px] mb-12 mt-20 overflow-hidden rounded-2xl">
           <Image
-            src="image/background/course-bg.png"         
+            src="/image/background/course-bg.png"         
             alt="Courses"
             fill
             className="object-cover"

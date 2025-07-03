@@ -1,12 +1,13 @@
 "use client"
 
+import React from "react"
 import Script from "next/script"
 import { usePathname } from "next/navigation"
 import { useEffect } from "react"
 
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 

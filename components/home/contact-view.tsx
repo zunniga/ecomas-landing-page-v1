@@ -61,7 +61,7 @@ export default function ContactForm() {
       {/* Decorative lines background */}
       <div className="absolute inset-0 opacity-30">
         <Image
-          src="image/utils/linear.png"
+          src="/image/utils/linear.png"
           alt=""
           fill
           className="object-cover"

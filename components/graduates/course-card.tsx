@@ -1,3 +1,4 @@
+import React from "react"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Star, Bookmark } from "lucide-react"
@@ -12,7 +13,7 @@ interface CourseProps {
   instructor: string
 }
 
-export function CourseCard({ course, index }: { course: CourseProps; index: number }) {
+export function CourseCard({ course }: { course: CourseProps }) {
   return (
     <Card className="bg-[#1e293b]/70 border-0 shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
       <div className="p-6">

@@ -1,7 +1,7 @@
 "use client"
-
+import React from "react"
 import { useState, useEffect } from "react"
-import { IoIosArrowUp } from "react-icons/io"
+import { ArrowUp } from "lucide-react"
 
 function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false)
@@ -36,23 +36,23 @@ function ScrollToTopButton() {
   }, [])
 
   return (
-    <>   
-      {/* Botón de scroll to top mejorado */}
+    <>
+      {/* Botón de scroll to top con color azul personalizado */}
       <button
         className={`
-                    fixed bottom-24 right-6 z-50 
-                    w-14 h-14 rounded-full  
-                  bg-gradient-to-r from-[#CF0072] to-[#90007e] dark:from-[#360b7f] dark:to-[#110d40] border dark:border-white-50/20
-                    text-white shadow-2xl
-                    flex items-center justify-center
-                    transition-all duration-500 ease-out
-                    hover:scale-110 hover:shadow-[0_0_30px_rgba(207,0,114,0.5)]
-                    active:scale-95
-                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}
-                    animate-slow-bounce
-                `}
+          fixed bottom-24 right-6 z-50 
+          w-14 h-14 rounded-full  
+          bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] dark:from-[#020f3b] dark:to-[#020f3b] 
+          border border-[#2563eb]/20 dark:border-white/20
+          text-white shadow-2xl
+          flex items-center justify-center
+          transition-all duration-500 ease-out
+          hover:scale-110 hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]
+          active:scale-95
+          ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"}
+          animate-slow-bounce
+        `}
         onClick={scrollToTop}
-      
       >
         {/* Círculo de progreso */}
         <div className="absolute inset-0 rounded-full">
@@ -74,38 +74,38 @@ function ScrollToTopButton() {
         </div>
 
         {/* Icono de flecha */}
-        <IoIosArrowUp className="w-6 h-6 relative z-10" />
+        <ArrowUp className="w-6 h-6 relative z-10" />
 
         {/* Efecto de brillo */}
         <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
       </button>
 
       {/* Estilos CSS personalizados */}
-      <style jsx>{`
-                @keyframes slow-bounce {
-                    0%, 100% {
-                        transform: translateY(0);
-                        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-                    }
-                    50% {
-                        transform: translateY(-8px);
-                        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-                    }
-                }
-                
-                .animate-slow-bounce {
-                    animation: slow-bounce 3s infinite;
-                }
-                
-                @keyframes pulse-glow {
-                    0%, 100% {
-                        box-shadow: 0 0 20px rgba(207, 0, 114, 0.3);
-                    }
-                    50% {
-                        box-shadow: 0 0 40px rgba(207, 0, 114, 0.6);
-                    }
-                }
-            `}</style>
+      <style>{`
+        @keyframes slow-bounce {
+          0%, 100% {
+            transform: translateY(0);
+            animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+          }
+          50% {
+            transform: translateY(-8px);
+            animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+          }
+        }
+        
+        .animate-slow-bounce {
+          animation: slow-bounce 3s infinite;
+        }
+        
+        @keyframes pulse-glow {
+          0%, 100% {
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+          }
+          50% {
+            box-shadow: 0 0 40px rgba(37, 99, 235, 0.6);
+          }
+        }
+      `}</style>
     </>
   )
 }

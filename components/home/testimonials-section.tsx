@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
@@ -27,11 +28,20 @@ const testimonialVariants = {
   }),
 };
 
+interface Testimonial {
+  id: string | number;
+  name: string;
+  role: string;
+  image?: string;
+  quote: string;
+  rating: number;
+}
+
 function TestimonialCard({
   testimonial,
   index,
 }: {
-  testimonial: any;
+  testimonial: Testimonial;
   index: number;
 }) {
   return (

@@ -4,7 +4,7 @@ export const testimonials = [
     name: "Abel Ventocilla",
     role: "Estudiante",
     image:
-      "image/testimonials/picture.png",
+      "/image/testimonials/picture.png",
     quote:
       "Recomiendo de Corporación Promás, la seriedad que brinda en los temarios de sus capacitaciones, estando en la vanguardia del mercado laboral.",
     rating: 5,
@@ -14,7 +14,7 @@ export const testimonials = [
     name: "Noe Ramos Castro",
     role: "Estudiante",
     image:
-       "image/testimonials/picture2.png",
+       "/image/testimonials/picture2.png",
     quote:
       "agradecer a CORPORACION PROMAS por brindarnos los dilpomado en las diferentes carreras , de mi parte estoy muy agradecido ya que nos brindan una buena formación profesional con buenos docentes especializados.",
     rating: 5,
@@ -24,7 +24,7 @@ export const testimonials = [
     name: "Deysi Vanesa",
     role: "Estudiante",
     image:
-       "image/testimonials/picture3.png",
+       "/image/testimonials/picture3.png",
     quote:
       "Recomiendo a Corporación Promás por la buena atención que brinda al momento de brindar los cursos y diplomados. ✨",
     rating: 5,
@@ -34,7 +34,7 @@ export const testimonials = [
     name: "Yuli Apaza Ramos",
     role: "Estudiante",
     image:
-      "image/testimonials/picture4.png",
+      "/image/testimonials/picture4.png",
     quote:
       "Recomiendo a Corporación Promás, dado que cuenta con ponentes de amplia experiencia en materia de ingenierias.",
     rating: 5,
@@ -44,7 +44,7 @@ export const testimonials = [
     name: "Rusbel Ticona Puma",
     role: "Estudiante",
     image:
-      "image/testimonials/picture5.png",
+      "/image/testimonials/picture5.png",
     quote:
       "En PROMAS, la calidad de los cursos es increíble! Aprovechen esta oportunidad para aprender de los mejores. ¡No se lo pierdan, muy Recomendado! 🌟📚",
     rating: 5,
@@ -54,7 +54,7 @@ export const testimonials = [
     name: "Less Xiomy",
     role: "Estudiante",
     image:
-       "image/testimonials/picture6.png",
+       "/image/testimonials/picture6.png",
     quote:
       "Promás tiene diplomados y cursos recomendados al 100% , los ponentes tienen un buen método de enseñanza. Lo recomiendo.",
     rating: 5,
@@ -64,7 +64,7 @@ export const testimonials = [
     name: "Paola Solórzano",
     role: "Estudiante",
     image:
-       "image/testimonials/picture7.png",
+       "/image/testimonials/picture7.png",
     quote:
       "Corporación Promas; cuenta con cursos y diplomados, y lo mejor es que cuenta con docentes de alta calidad y buena enseñanza.  recomendando al 100% a la corporacion Promas. 🤝 👍",
     rating: 5,
@@ -74,7 +74,7 @@ export const testimonials = [
     name: "Vida de ingeniero",
     role: "Estudiante",
     image:
-       "image/testimonials/picture8.png",
+       "/image/testimonials/picture8.png",
     quote:
       "Agradecer a corporación promas por apoyar y otorgar becas a los estudiantes para que puedan continuar estudios de especializacion .",
     rating: 5,
@@ -84,7 +84,7 @@ export const testimonials = [
     name: "Jade Ruby",
     role: "Estudiante",
     image:
-       "image/testimonials/picture9.png",
+       "/image/testimonials/picture9.png",
     quote:
       "Explora nuevas oportunidades profesionales con los cursos y diplomados virtuales de Corporación PROMÁS.",
     rating: 5,

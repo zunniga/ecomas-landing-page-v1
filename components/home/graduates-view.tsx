@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -7,7 +8,6 @@ import {
   Heart,
   ChevronLeft,
   ChevronRight,
-  Play,
   Clock,
   Users,
 } from "lucide-react";
@@ -309,7 +309,7 @@ export default function DiplomadosCarousel() {
                     <div className="aspect-[3/4] relative overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10"></div>
                       <Image
-                        src={"image/graduates/tt.png"}
+                        src={"/image/graduates/tt.png"}
                         alt={diplomado.title}
                         width={200}
                         height={300}

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import React from "react";
 import { Phone, Mail, FileText } from "lucide-react";
 import {
   FaFacebookF,
@@ -65,8 +66,8 @@ export default function ModernFooter() {
                 currentTheme === "dark" ? "text-gray-300" : "text-gray-600"
               }`}
             >
-              "Gracias por visitarnos. En PROMÁS, estamos comprometidos con tu
-              desarrollo profesional. ¡Esperamos verte pronto!"
+              &quot;Gracias por visitarnos. En PROMÁS, estamos comprometidos con tu
+              desarrollo profesional. ¡Esperamos verte pronto!&quot;
             </div>
 
             <div className="space-y-3">

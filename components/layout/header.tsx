@@ -26,10 +26,20 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
+
+  // Fix hydration issues
+  useEffect(() => {
+    setIsClient(true);
+    // Set initial scroll state
+    setIsScrolled(window.scrollY > 10);
+  }, []);
 
   // Scroll spy para detectar la sección activa
   useEffect(() => {
+    if (!isClient) return;
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
 
@@ -69,18 +79,19 @@ export default function Header() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // Ejecutar una vez al montar
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [pathname, activeSection]);
+  }, [pathname, activeSection, isClient]);
 
   // Detectar cambios de ruta para resetear el estado
   useEffect(() => {
+    if (!isClient) return;
+
     if (pathname !== "/") {
       setActiveSection("");
     } else {
-      // No establecer "hero" automáticamente, dejar que el scroll spy lo detecte
       const timer = setTimeout(() => {
         if (window.scrollY < 100) {
           setActiveSection("hero");
@@ -89,7 +100,7 @@ export default function Header() {
 
       return () => clearTimeout(timer);
     }
-  }, [pathname]);
+  }, [pathname, isClient]);
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -109,12 +120,10 @@ export default function Header() {
 
   // Función para determinar si un enlace está activo
   const isLinkActive = (item: (typeof navItems)[0]) => {
-    // Para enlaces externos
     if (item.target === "_blank") {
       return false;
     }
 
-    // Para páginas diferentes (no one-page)
     if (
       item.href.startsWith("/") &&
       !item.href.includes("#") &&
@@ -123,12 +132,10 @@ export default function Header() {
       return pathname === item.href;
     }
 
-    // Para enlaces de sección en one-page (solo cuando estamos en la página principal)
     if (pathname === "/" && item.section) {
       return activeSection === item.section;
     }
 
-    // Para cualquier otro caso
     return false;
   };
 
@@ -151,9 +158,35 @@ export default function Header() {
     closeMobileMenu();
   };
 
+  // Prevent rendering until client-side hydration is complete
+  if (!isClient) {
+    return (
+      <header className="fixed w-full z-50 bg-[#03060C] h-[80px]">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between py-4">
+            <div className="w-[200px] h-[48px]" /> {/* Logo placeholder */}
+            <div className="hidden lg:flex flex-1" /> {/* Nav placeholder */}
+            <div className="hidden lg:flex w-[120px]" />{" "}
+            {/* Button placeholder */}
+            <div className="lg:hidden w-[40px]" />{" "}
+            {/* Mobile button placeholder */}
+          </div>
+        </div>
+      </header>
+    );
+  }
+
   return (
     <>
-      <header
+      <motion.header
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+          duration: 0.6,
+        }}
         className={`fixed w-full z-50 transition-all duration-300 ${
           isScrolled
             ? "bg-[#03060C]/95 backdrop-blur-xl shadow-lg border-b border-gray-700/30"
@@ -165,64 +198,90 @@ export default function Header() {
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
             <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
               className="flex items-center"
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <Link href="/" className="flex items-center">
                 <Image
                   src="/image/logo/logo_main_ecomas.png"
                   alt="Logo"
                   width={200}
-                  height={200}
+                  height={48}
+                  priority
+                  style={{
+                    width: "auto",
+                    height: "auto",
+                    maxWidth: "200px",
+                    maxHeight: "48px",
+                  }}
                 />
               </Link>
             </motion.div>
 
             {/* Navegación Central - Solo Desktop */}
-            <nav className="hidden lg:flex items-center justify-center flex-1">
+            <motion.nav
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="hidden lg:flex items-center justify-center flex-1"
+            >
               <div className="flex items-center space-x-8">
-                {navItems.map((item) => (
-                  <Link
+                {navItems.map((item, index) => (
+                  <motion.div
                     key={item.name}
-                    href={item.href}
-                    target={item.target}
-                    onClick={(e) => handleSectionClick(e, item)}
-                    className={`text-sm font-medium transition-all duration-300 relative group px-4 py-2 rounded-lg overflow-hidden ${
-                      isLinkActive(item)
-                        ? "text-[#111827] bg-white font-semibold shadow-md"
-                        : "text-gray-300 hover:text-white"
-                    }`}
+                    initial={{ y: -20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.4 + index * 0.1, duration: 0.3 }}
                   >
-                    <span className="relative z-10">{item.name}</span>
-                    {!isLinkActive(item) && (
-                      <span className="absolute inset-0 bg-gradient-to-r from-blue-800/90 to-gray-600/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-lg" />
-                    )}
-                  </Link>
+                    <Link
+                      href={item.href}
+                      target={item.target}
+                      onClick={(e) => handleSectionClick(e, item)}
+                      className={`text-sm font-medium transition-all duration-300 relative group px-4 py-2 rounded-lg overflow-hidden ${
+                        isLinkActive(item)
+                          ? "text-[#111827] bg-white font-semibold shadow-md"
+                          : "text-gray-300 hover:text-white"
+                      }`}
+                    >
+                      <span className="relative z-10">{item.name}</span>
+                      {!isLinkActive(item) && (
+                        <span className="absolute inset-0 bg-gradient-to-r from-blue-800/90 to-gray-600/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-lg" />
+                      )}
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
-            </nav>
+            </motion.nav>
 
             {/* Botón Contactar - Desktop */}
-            <div className="hidden lg:flex items-center">
+            <motion.div
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="hidden lg:flex items-center"
+            >
               <Button
                 size="sm"
-                className="text-sm bg-white text-[#111827] hover:bg-blue-600 hover:scale-105 shadow-md hover:shadow-lg rounded-lg transition-all duration-300 px-6 font-semibold"
+                className="text-sm bg-[#2563eb] text-white hover:bg-blue-600 hover:scale-105 shadow-md hover:shadow-lg rounded-lg transition-all duration-300 px-6 font-semibold"
                 asChild
               >
-                <Link
-                  href="/contacto"
-                  className="bg-[#2563eb] text-white flex items-center gap-2"
-                >
-                  <Phone size={18} className="text-white" />{" "}
-                  {/* Icono de llamada */}
+                <Link href="/contacto" className="flex items-center gap-2">
+                  <Phone size={18} />
                   Contactar
                 </Link>
               </Button>
-            </div>
+            </motion.div>
 
             {/* Mobile Menu Button */}
-            <div className="flex items-center lg:hidden">
+            <motion.div
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="flex items-center lg:hidden"
+            >
               <Button
                 size="icon"
                 variant="ghost"
@@ -230,12 +289,17 @@ export default function Header() {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label="Toggle menu"
               >
-                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                <motion.div
+                  animate={{ rotate: isMobileMenuOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </motion.div>
               </Button>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
@@ -300,7 +364,8 @@ export default function Header() {
                   onClick={closeMobileMenu}
                 >
                   <Link href="/contacto" className="flex items-center gap-2">
-                    📞 Contactar
+                    <Phone size={18} />
+                    Contactar
                   </Link>
                 </Button>
               </motion.div>

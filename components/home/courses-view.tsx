@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import {
@@ -7,8 +8,6 @@ import {
   ChevronRight,
   Clock,
   BookOpen,
-  Star,
-  Play,
   Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -127,7 +126,7 @@ export default function ModernCourseCarousel() {
                 <div className="group bg-white dark:bg-[#101424] rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-slate-200 dark:border-slate-700">
                   <div className="relative overflow-hidden">
                     <Image
-                      src="image/courses/course2.jpg"
+                      src="/image/courses/course2.jpg"
                       alt={course.title}
                       width={400}
                       height={300}
