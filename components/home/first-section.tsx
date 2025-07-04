@@ -3,7 +3,7 @@ import React from "react"
 import { motion, useInView } from "framer-motion"
 import { useRef, useState } from "react"
 import { Code, Rocket, Headphones, Check, ArrowRight } from "lucide-react"
-import Image from "next/image"
+
 
 // 🎨 CONFIGURACIÓN CENTRALIZADA DE ESTILOS Y COLORES
 const THEME_CONFIG = {
@@ -23,6 +23,9 @@ const THEME_CONFIG = {
       from: "#1e40af",
       to: "#1d4ed8",
     },
+
+
+    
     success: "#25eb3f",
   },
 
@@ -55,7 +58,7 @@ const THEME_CONFIG = {
     background: "bg-gradient-to-r",
     shadow: "shadow-lg group-hover:shadow-xl",
     transition: "transition-all duration-300",
-    spacing: "rounded-xl mb-6 flex items-center justify-center",
+    spacing: "rounded-full mb-6 flex items-center justify-center",
   },
 
   // Estilos de botones
@@ -187,11 +190,11 @@ const InteractiveServices = () => {
     <section id="about" className="relative overflow-hidden py-16 lg:py-24">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden bg-black">
-        <div className="absolute inset-0 opacity-30">
+        {/* <div className="absolute inset-0 opacity-30">
           <Image src="/image/utils/foot.png" alt="" fill className="object-cover" priority />
-        </div>
+        </div> */}
         <motion.div
-          className={`absolute top-20 left-10 w-40 h-40 bg-[#2563eb]/30 rounded-full blur-xl`}
+          className={`absolute top-20 left-10 w-60 h-60 bg-[#2563eb]/50 rounded-full blur-xl`}
           animate={{
             scale: [1, 1.2, 1],
             opacity: [0.1, 0.2, 0.1],
@@ -203,7 +206,7 @@ const InteractiveServices = () => {
           }}
         />
         <motion.div
-          className={`absolute bottom-20 right-10 w-40 h-40 bg-[#2563eb]/20 rounded-full blur-xl`}
+          className={`absolute bottom-20 right-10 w-40 h-40 bg-[#2563eb]/50 rounded-full blur-xl`}
           animate={{
             scale: [1, 1.3, 1],
             opacity: [0.2, 0.3, 0.2],
@@ -302,7 +305,7 @@ const InteractiveServices = () => {
                   {/* Icon Container */}
                   <motion.div
                     className={`
-                      relative z-10
+                      relative z-10 border border-[#2563eb]/80
                       ${THEME_CONFIG.icon.size}
                       ${THEME_CONFIG.icon.spacing}
                       ${THEME_CONFIG.icon.background} ${getGradient(THEME_CONFIG.colors.primary.from, THEME_CONFIG.colors.primary.to)}
@@ -311,7 +314,7 @@ const InteractiveServices = () => {
                     `}
                     whileHover={THEME_CONFIG.animations.iconHover}
                   >
-                    <IconComponent className={`${THEME_CONFIG.icon.iconSize} text-white`} strokeWidth={2} />
+                    <IconComponent className="text-white" />
                   </motion.div>
 
                   {/* Content */}

@@ -1,13 +1,14 @@
 import React from "react";
 import type { Metadata } from "next";
 import HeroSection from "@/components/home/hero-section";
-import ServicesOverview from "@/components/home/graduates-view";
-import WhyChooseUsSection from "@/components/home/courses-view";
+import ServicesSection from "@/components/home/services-view";
+// import WhyChooseUsSection from "@/components/home/courses-view";
 import TestimonialsSection from "@/components/home/testimonials-section";
 import FirstSection from "@/components/home/first-section";
-import CounterNumbers from "@/components/home/counter-number";
+// import CounterNumbers from "@/components/home/counter-number";
 import ContactView from "@/components/home/contact-view";
 import SkillsInformation from "@/components/home/skills-information";
+
 
 export const metadata: Metadata = {
   title: "ECOMAS DEV",
@@ -18,16 +19,14 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-     
-          <HeroSection />
-          <SkillsInformation />
-          <FirstSection />
-          <ServicesOverview />
-          <TestimonialsSection />
-          <WhyChooseUsSection />
-          <CounterNumbers />
-          <ContactView />
-     
+      <HeroSection />
+      <SkillsInformation />
+      <FirstSection />
+      <ServicesSection />
+      <TestimonialsSection />
+      {/* <WhyChooseUsSection /> */}
+      {/* <CounterNumbers /> */}
+      <ContactView />
     </>
   );
 }

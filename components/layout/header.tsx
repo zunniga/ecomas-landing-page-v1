@@ -8,17 +8,18 @@ import { Menu, Phone, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-const navItems = [
+type NavItem = {
+  name: string;
+  href: string;
+  section: string | null;
+  target?: string;
+};
+
+const navItems: NavItem[] = [
   { name: "INICIO", href: "/#hero", section: "hero" },
   { name: "NOSOTROS", href: "/#about", section: "about" },
-  {
-    name: "CERTIFICADOS",
-    href: "https://www.verycerts.com/certs",
-    target: "_blank",
-    section: null,
-  },
-  { name: "DIPLOMADOS", href: "/graduates", section: null },
-  { name: "CURSOS", href: "/courses", section: null },
+  { name: "SERVICIOS", href: "/#services", section: "services" },
+  { name: "PROYECTOS", href: "/#projects", section: null },
   { name: "CONTÁCTANOS", href: "/#contacts", section: "contacts" },
 ];
 
@@ -45,7 +46,7 @@ export default function Header() {
 
       // Solo aplicar scroll spy en la página principal
       if (pathname === "/") {
-        const sections = ["hero", "about", "contacts"];
+        const sections = ["hero", "services", "about", "contacts"];
 
         // Si estamos muy arriba, activar hero
         if (window.scrollY < 50) {

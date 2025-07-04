@@ -84,7 +84,7 @@ const carouselData = [
   },
   {
     id: 2,
-    image: "/image/background/bg-hero.png",
+    image: "/image/background/bg-laptop.png",
     title: "Construye tu",
     highlight: "Plataforma",
     subtitle: "con Expertos",
@@ -94,7 +94,7 @@ const carouselData = [
   },
   {
     id: 3,
-    image: "/image/background/bg-hero.png",
+    image: "/image/background/bg-hero3.png",
     title: "Acelera tu",
     highlight: "Transformación",
     subtitle: "Digital",
