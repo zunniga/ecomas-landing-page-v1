@@ -47,7 +47,7 @@ const bubbles: FloatingBubble[] = [
 
 export default function FloatingBubbles() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
       {bubbles.map((bubble) => (
         <motion.div
           key={bubble.id}

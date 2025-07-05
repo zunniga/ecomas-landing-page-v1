@@ -132,3 +132,17 @@ html {
 .hover-lift {
   @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
 }
+
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}

@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/select";
 import { Facebook, Twitter, Dribbble, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function ContactView() {
   const [formData, setFormData] = useState({
@@ -58,10 +59,15 @@ export default function ContactView() {
   return (
     <div id="contacts" className="min-h-screen bg-black relative overflow-hidden py-12">
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-[#2563eb] to-[#1d4ed8] rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-gradient-to-r from-[#1e40af] to-[#2563eb] rounded-full blur-3xl"></div>
-      </div>
+       <div className="absolute inset-0 opacity-30">
+             <Image
+               src="/image/utils/dd.png"
+               alt=""
+               fill
+               className="object-cover"
+               priority
+             />
+           </div>
 
       <div className="relative z-10 container mx-auto px-4">
         {/* Centered Title */}
@@ -104,8 +110,7 @@ export default function ContactView() {
             <motion.div className="space-y-4" variants={itemVariants}>
               <h3 className="text-white text-xl font-semibold">Dirección</h3>
               <div className="text-gray-300 space-y-1">
-                <p>Av. Javier Prado Este 4200,</p>
-                <p>Santiago de Surco, Lima, Perú</p>
+                <p>Lima, Perú</p>
               </div>
             </motion.div>
 

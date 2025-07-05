@@ -1,9 +1,8 @@
-"use client";
-
-import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
-import Image from "next/image";
+"use client"
+import React from "react"
+import  { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect } from "react"
+import Image from "next/image"
 
 const technologies = [
   { image: "/image/logo/skills/java.svg" },
@@ -14,41 +13,35 @@ const technologies = [
   { image: "/image/logo/skills/unity.svg" },
   { image: "/image/logo/skills/docker.svg" },
   { image: "/image/logo/skills/figmaa.svg" },
-];
+]
 
 export default function SkillsInformation() {
-  const [currentTechs, setCurrentTechs] = useState(technologies.slice(0, 6));
-  const [techIndex, setTechIndex] = useState(0);
+  const [currentTechs, setCurrentTechs] = useState(technologies.slice(0, 6))
+  const [techIndex, setTechIndex] = useState(0)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setTechIndex((prevIndex) => {
-        const newIndex = (prevIndex + 1) % technologies.length;
-        const newTechs = [];
+        const newIndex = (prevIndex + 1) % technologies.length
+        const newTechs = []
 
         // Seleccionar 6 tecnologías consecutivas con wrap-around
         for (let i = 0; i < 6; i++) {
-          newTechs.push(technologies[(newIndex + i) % technologies.length]);
+          newTechs.push(technologies[(newIndex + i) % technologies.length])
         }
 
-        setCurrentTechs(newTechs);
-        return newIndex;
-      });
-    }, 3500); // Cambiar cada 2.5 segundos
+        setCurrentTechs(newTechs)
+        return newIndex
+      })
+    }, 3500) // Cambiar cada 2.5 segundos
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center p-8 relative">
       <div className="absolute inset-0 opacity-25">
-        <Image
-          src="/image/utils/true.png"
-          alt=""
-          fill
-          className="object-cover"
-          priority
-        />
+        <Image src="/image/utils/true.png" alt="" fill className="object-cover" priority />
       </div>
       <div className="max-w-6xl mx-auto text-center">
         {/* Título principal */}
@@ -58,7 +51,7 @@ export default function SkillsInformation() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Desarrollo web e ingeniería de software
+          Ingeniería de <span className="text-[#2563eb]">software</span> con tecnologías modernas
         </motion.h1>
 
         {/* Subtítulo */}
@@ -68,7 +61,8 @@ export default function SkillsInformation() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Desde startups de próxima generación hasta empresas establecidas.
+          Desarrollamos soluciones digitales escalables con tecnología de vanguardia y una arquitectura orientada al
+          alto rendimiento.
         </motion.p>
 
         {/* Grid de tecnologías */}
@@ -113,7 +107,7 @@ export default function SkillsInformation() {
                     }}
                   >
                     <img
-                      src={tech.image}
+                      src={tech.image || "/placeholder.svg"}
                       width={108}
                       height={108}
                       className="text-white group-hover:text-transparent transition-colors duration-300"
@@ -125,10 +119,8 @@ export default function SkillsInformation() {
                       initial={false}
                     />
                   </motion.div>
-
-                
                 </motion.div>
-              );
+              )
             })}
           </AnimatePresence>
         </div>
@@ -140,21 +132,17 @@ export default function SkillsInformation() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          {Array.from({ length: Math.ceil(technologies.length / 6) }).map(
-            (_, index) => (
-              <motion.div
-                key={index}
-                className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                  Math.floor(techIndex / 6) === index
-                    ? "bg-blue-500"
-                    : "bg-gray-600"
-                }`}
-                whileHover={{ scale: 1.2 }}
-              />
-            )
-          )}
+          {Array.from({ length: Math.ceil(technologies.length / 6) }).map((_, index) => (
+            <motion.div
+              key={index}
+              className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                Math.floor(techIndex / 6) === index ? "bg-blue-500" : "bg-gray-600"
+              }`}
+              whileHover={{ scale: 1.2 }}
+            />
+          ))}
         </motion.div>
       </div>
     </div>
-  );
+  )
 }

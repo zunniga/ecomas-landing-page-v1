@@ -15,7 +15,7 @@ const containerVariants = {
 
 const slideInLeft = {
   hidden: { x: -100, opacity: 0 },
-  visible: { x: 0, opacity: 1, transition: { duration: 0.8 } },
+  visible: { x: 0, opacity: 1, transition : { duration: 0.8 } },
   exit: { x: -100, opacity: 0, transition: { duration: 0.5 } },
 }
 
@@ -140,14 +140,15 @@ export default function HeroSection() {
       animate="visible"
     >
       {/* Imagen de fondo */}
-      <div className="absolute inset-0 opacity-35">
-        <Image src="/image/utils/25.png" alt="" fill className="object-cover" priority />
+      <div className="absolute inset-0 mt-5 opacity-25">
+        <Image src="/image/utils/qq.png" alt="" fill className="object-cover" priority />
       </div>
-      
 
+      <div className="absolute inset-0 opacity-25 hidden md:block">
+        <Image src="/image/utils/wwe.png" alt="" fill className="object-cover animate-pulse" priority />
+      </div>
       {/* Burbujas flotantes reemplazando los elementos decorativos */}
       <FloatingBubbles />
-
 
       {/* Contenido principal */}
       <div className="container mx-auto px-4 relative z-10">

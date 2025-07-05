@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/header";
-import Footer from "@/components/layout/footer";
+import ModernFooter from "@/components/layout/footer";
 import WhatsAppWidget from "@/components/widgets/whatsapp-widget";
 import GoogleAnalytics from "@/components/analytics/google-analytics";
 import { ThemeProvider } from "next-themes";
@@ -16,16 +16,15 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Corporación Inalta - Formación Profesional de Alto Nivel",
+  title: "ECOMAS DEV",
   description:
-    "Corporación Inalta es una empresa peruana especializada en ofrecer cursos y diplomados para profesionales de diversos sectores, promoviendo el desarrollo y la capacitación continua.",
+    "Ecomas Dev es una empresa enfocada al desarrollo de software a medida para empresas y organizaciones. Ofrecemos soluciones tecnologicas innovadoras y personalizadas para ayudar a nuestros clientes a alcanzar sus objetivos de negocio. ",
   keywords:
-    "Corporación Inalta, cursos profesionales, diplomados en Perú, capacitación continua, educación para profesionales, formación especializada, cursos en línea",
+    "Ecomas Dev es una empresa enfocada al desarrollo de software a medida para empresas y organizaciones. Ofrecemos soluciones tecnologicas innovadoras y personalizadas para ayudar a nuestros clientes a alcanzar sus objetivos de negocio.",
   openGraph: {
-    title: "Corporación Inalta - Formación Profesional de Alto Nivel",
+    title: "Ecomas Dev",
     description:
-      "Corporación Inalta ofrece cursos y diplomados en Perú para profesionales de distintos rubros. Impulsa tu desarrollo con formación especializada y de calidad.",
-    images: ["/images/og-image.jpg"],
+      "Ecomas Dev es una empresa enfocada al desarrollo de software a medida para empresas y organizaciones. Ofrecemos soluciones tecnologicas innovadoras y personalizadas para ayudar a nuestros clientes a alcanzar sus objetivos de negocio.",
     type: "website",
     locale: "es_PE",
   },
@@ -50,8 +49,7 @@ export default function RootLayout({
           <GoogleAnalytics />
           <Header />
           <main>{children}</main>
-          <Footer />
-
+          <ModernFooter />
           <WhatsAppWidget />
           <ScrollToTopButton />
         </ThemeProvider>
